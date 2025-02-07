@@ -25,32 +25,22 @@ public class CustomAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-      String authorizationHeader =  request.getHeader("Authorization");
-
-      if(authorizationHeader == null){
-          filterChain.doFilter(request, response);
-          return;
-      }
-
-      if(!authorizationHeader.startsWith("Bearer ")){
-          filterChain.doFilter(request, response);
-          return;
-      }
-
-      String apikey =authorizationHeader.substring("Bearer ".length());
-
-    Optional<Member> opMember = memberService.findByApiKey(apikey);
-
-        if(opMember.isEmpty()){
+        String authorizationHeader = request.getHeader("Authorization");
+        if (authorizationHeader == null) {
             filterChain.doFilter(request, response);
             return;
         }
-        Member member = opMember.get();
-        rq.setLogin(actor.getUsername);
-    rq.setLogin("user1"); //user1이 로그인했다.
-
-        filterChain.doFilter(request, response);
-
-
+        if (!authorizationHeader.startsWith("Bearer ")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+        String apiKey = authorizationHeader.substring("Bearer ".length());
+        Optional<Member> opMember = memberService.findByApiKey(apiKey);
+        if (opMember.isEmpty()) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+        Member actor = opMember.get();
+        rq.setLogin(actor.getUsername());
     }
 }
