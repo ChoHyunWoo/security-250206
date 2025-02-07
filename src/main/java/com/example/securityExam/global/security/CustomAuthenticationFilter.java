@@ -21,7 +21,6 @@ public class CustomAuthenticationFilter extends OncePerRequestFilter {
     private final Rq rq;
     private final MemberService memberService;
 
-
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
@@ -42,5 +41,7 @@ public class CustomAuthenticationFilter extends OncePerRequestFilter {
         }
         Member actor = opMember.get();
         rq.setLogin(actor.getUsername());
+
+        filterChain.doFilter(request, response);
     }
 }
