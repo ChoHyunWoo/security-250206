@@ -1,8 +1,8 @@
 package com.example.securityExam;
 
-import com.example.rest_tdd.domain.member.member.controller.ApiV1MemberController;
-import com.example.rest_tdd.domain.member.member.entity.Member;
-import com.example.rest_tdd.domain.member.member.service.MemberService;
+import com.example.securityExam.domain.member.member.controller.ApiV1MemberController;
+import com.example.securityExam.domain.member.member.entity.Member;
+import com.example.securityExam.domain.member.member.service.MemberService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.nio.charset.StandardCharsets;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.matchesPattern;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;

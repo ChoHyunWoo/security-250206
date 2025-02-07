@@ -1,9 +1,9 @@
 package com.example.securityExam;
 
-import com.example.rest_tdd.domain.post.comment.controller.ApiV1CommentController;
-import com.example.rest_tdd.domain.post.comment.entity.Comment;
-import com.example.rest_tdd.domain.post.post.entity.Post;
-import com.example.rest_tdd.domain.post.post.service.PostService;
+import com.example.securityExam.domain.post.comment.controller.ApiV1CommentController;
+import com.example.securityExam.domain.post.comment.entity.Comment;
+import com.example.securityExam.domain.post.post.entity.Post;
+import com.example.securityExam.domain.post.post.service.PostService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

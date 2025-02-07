@@ -1,10 +1,10 @@
 package com.example.securityExam;
 
-import com.example.rest_tdd.domain.member.member.entity.Member;
-import com.example.rest_tdd.domain.member.member.service.MemberService;
-import com.example.rest_tdd.domain.post.post.controller.ApiV1PostController;
-import com.example.rest_tdd.domain.post.post.entity.Post;
-import com.example.rest_tdd.domain.post.post.service.PostService;
+import com.example.securityExam.domain.member.member.entity.Member;
+import com.example.securityExam.domain.member.member.service.MemberService;
+import com.example.securityExam.domain.post.post.controller.ApiV1PostController;
+import com.example.securityExam.domain.post.post.entity.Post;
+import com.example.securityExam.domain.post.post.service.PostService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +12,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -304,6 +306,7 @@ public class ApiV1PostControllerTest {
 
     @Test
     @DisplayName("글 작성")
+    @WithUserDetails("user1")
     void write1() throws Exception {
 
         String apiKey = "user1";
